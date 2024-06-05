@@ -1,0 +1,7 @@
+{
+  "schemaType": "LAUNCHER",
+  "id": "qaops-nrql",
+  "displayName": "QaopsNrql",
+  "description": "Describe me",
+  "rootNerdletId": "a89eead7-4df5-462f-974d-c625231ea8f7.qaops"
+}
