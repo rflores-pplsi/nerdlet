@@ -37,15 +37,15 @@ export default class QaopsNerdlet extends React.Component {
   getQuery = passedValue => {
     let query = "";
     if (passedValue === "passed") {
-      query = `SELECT * FROM Playwright WHERE status = 'passed' LIMIT MAX SINCE 1 MONTHS AGO`;
+      query = `SELECT * FROM Playwright WHERE status = 'passed' LIMIT MAX SINCE 365 DAYS AGO`;
     } else if (passedValue === "failed") {
-      query = `SELECT * FROM Playwright WHERE status = 'failed' LIMIT MAX SINCE 1 MONTHS AGO`;
+      query = `SELECT * FROM Playwright WHERE status = 'failed' LIMIT MAX SINCE 365 DAYS AGO`;
     } else if (passedValue === "skipped") {
-      query = `SELECT * FROM Playwright WHERE status = 'skipped' LIMIT MAX SINCE 1 MONTHS AGO`;
+      query = `SELECT * FROM Playwright WHERE status = 'skipped' LIMIT MAX SINCE 365 DAYS AGO`;
     } else if (passedValue === "timedOut") {
-      query = `SELECT * FROM Playwright WHERE status = 'timedOut' LIMIT MAX SINCE 1 MONTHS AGO`;
+      query = `SELECT * FROM Playwright WHERE status = 'timedOut' LIMIT MAX SINCE 365 DAYS AGO`;
     } else if (passedValue === "interrupted") {
-      query = `SELECT * FROM Playwright WHERE status = 'interrupted' LIMIT MAX SINCE 1 MONTHS AGO`;
+      query = `SELECT * FROM Playwright WHERE status = 'interrupted' LIMIT MAX SINCE 365 DAYS AGO`;
     }
     return query;
   };
@@ -85,9 +85,7 @@ export default class QaopsNerdlet extends React.Component {
                   </div>
                   <div class="widget-content-right ms-auto">
                     <div class="widget-numbers text-white text-shadow">
-                      <span>
-                        <SkippedComponent />
-                      </span>
+                      <span>{/* <SkippedComponent /> */}</span>
                     </div>
                   </div>
                 </div>
@@ -104,9 +102,7 @@ export default class QaopsNerdlet extends React.Component {
                   </div>
                   <div className="widget-content-right ms-auto">
                     <div className="widget-numbers text-white text-shadow">
-                      <span className="m-2">
-                        <FailedComponent />
-                      </span>
+                      <span className="m-2">{/* <FailedComponent /> */}</span>
                     </div>
                   </div>
                 </div>
@@ -115,7 +111,7 @@ export default class QaopsNerdlet extends React.Component {
           </GridItem>
           <GridItem columnSpan={12} className="grid-table-results">
             <HeadingText className="chartHeader">{`Latest Test Results`}</HeadingText>
-            <NrqlQuery accountIds={[124794]} query="SELECT * FROM Playwright SINCE 1 DAYS AGO" pollInterval={100000}>
+            <NrqlQuery accountIds={[124794]} query="SELECT * FROM Playwright SINCE 365 DAYS AGO" pollInterval={100000}>
               {({ data }) => {
                 if (!data) {
                   return "";
@@ -159,17 +155,7 @@ export default class QaopsNerdlet extends React.Component {
               <p className="text-center">&copy; 2024 QAOPS</p>
             </div>
           </GridItem>
-          <GridItem columnSpan={12}>
-            <NrqlQuery accountIds={[124794]} query="SELECT * FROM PlaywrightFullReport SINCE 1 DAYS AGO">
-              {({ data }) => {
-                if (!data) {
-                  return [];
-                } else {
-                  return data[0].data[0].testResults;
-                }
-              }}
-            </NrqlQuery>
-          </GridItem>
+          <GridItem columnSpan={12}></GridItem>
         </Grid>
       </div>
     );

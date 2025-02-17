@@ -3,7 +3,7 @@ import NrqlQuery from "nr1";
 
 class DataFetcher extends React.Component {
   getQuery() {
-    const query = `SELECT * FROM Playwright WHERE status = '${this.props.selectedValue}' LIMIT MAX SINCE 1 MONTHS AGO`;
+    const query = `SELECT * FROM PlaywrightFullReport WHERE status = '${this.props.selectedValue}' LIMIT MAX SINCE 365 DAYS AGO`;
     return query;
   }
 

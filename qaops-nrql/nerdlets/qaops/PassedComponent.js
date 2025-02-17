@@ -6,15 +6,16 @@ function PassedComponent() {
     <>
       <NrqlQuery
         accountIds={[124794]}
-        query="SELECT count(*) FROM Playwright WHERE status = 'passed' SINCE 1 DAYS AGO"
+        query="SELECT count(*) FROM Playwright WHERE status = 'passed' SINCE 365 DAYS AGO"
         pollInterval={60000}
       >
         {({ data }) => {
           // console.log(data);
           if (!data) {
-            //console.log("no data available");
+            console.log("no data available");
             return "";
           } else {
+            console.log("passed tests:", data[0].data[0].count);
             return data[0].data[0].count;
           }
         }}

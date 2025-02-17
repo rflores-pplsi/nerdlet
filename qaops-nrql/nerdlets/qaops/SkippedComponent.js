@@ -6,7 +6,7 @@ function SkippedComponent() {
     <>
       <NrqlQuery
         accountIds={[124794]}
-        query="SELECT count(*) FROM Playwright WHERE status = 'skipped' SINCE 1 DAYS AGO"
+        query="SELECT count(*) FROM PlaywrightFullReport WHERE status = 'skipped' SINCE 365 DAYS AGO"
         pollInterval={60000}
       >
         {({ data }) => {

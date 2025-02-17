@@ -17,7 +17,7 @@ export default class GraphqlQuery extends React.Component {
         query($accountId: Int!) {
           actor {
             account(id: accountId) {
-              summery: nrql(query: "SELECT * FROM Playwright SINCE 1 DAYS AGO") {
+              summery: nrql(query: "SELECT * FROM PlaywrightFullReport SINCE 1 DAYS AGO") {
                 results
               }
             }
